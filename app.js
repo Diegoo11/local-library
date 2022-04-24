@@ -11,7 +11,8 @@ const helmet = require('helmet')
 
 const SomeModel = require('./models/somemodel')
 
-const mongoDB = 'mongodb+srv://Diegoo11:Diegoo11@cluster0.0lxgj.mongodb.net/library?retryWrites=true&w=majority';
+const dev_db_url = 'mongodb+srv://Diegoo11:Diegoo11@cluster0.0lxgj.mongodb.net/library?retryWrites=true&w=majority';
+const mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect( mongoDB, {useNewUrlParser: true , useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MingiDB connection error:'))
